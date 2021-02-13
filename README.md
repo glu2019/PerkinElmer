@@ -8,7 +8,7 @@
 2. Run docker-compose build
 3. Run docker-compose up (please make sure the ports 80, 8080 and 3000 are open.)
 4. To run it permernantly: docker-compose up -d
-4. visit localhost or 127.0.0.1, you will see the sudoko board. 
+4. visit localhost or 127.0.0.1. 
 
 ### Run frontend and backend seperately
 
