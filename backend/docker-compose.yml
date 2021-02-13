@@ -1,0 +1,9 @@
+version: "3"
+services:
+  web:
+    build: .
+    image: perkin-elmer:level-4
+    volumes:
+      - .:/usr/local/PerkinElmer/backend
+    ports:
+      - 8000:8000

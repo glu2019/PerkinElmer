@@ -1,0 +1,12 @@
+version: "3"
+services:
+  frontend:
+    build: .
+    image: perkin-elmer:level-4
+    volumes:
+      - .:/usr/local/PerkinElmer/frontend
+      - /usr/local/PerkinElmer/frontend/node_modules
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: production

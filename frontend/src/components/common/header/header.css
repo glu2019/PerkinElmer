@@ -1,0 +1,54 @@
+
+#header{
+  display: flex;
+  position: fixed;
+  width:100px;
+  height: 100%;
+  max-width: '13.75rem';
+   padding: 0;
+   z-index: 1000;
+   background: #f9f6ef;
+}
+#sidenav-container{
+  display: 'inline-block';
+  padding-top: 16;
+  padding-bottom: 16;
+  font-family: 'Roboto';
+  width: 240;
+  background: '#FFF';
+  color: '#444';
+  box-shadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)'
+}
+#dashboard{
+  height: 70px;
+}
+#texada-logo{
+  width: 180% !important;
+  object-fit: contain;
+  position: relative;
+  top: 0px;
+  left: -15px;
+}
+.texada{
+  height: 50px;
+}
+.header-list-icon{
+  width: 25px !important;
+}
+.header-list-icon div{
+  margin: 0 auto;
+  margin-left: -1px;
+  color: #2c3e50;
+}
+.dpLRPu{
+  margin-top: 4px;
+  padding-right: 0px !important;
+  color: #2c3e50;
+}
+.iJRbHV {
+  text-align: center;
+}
+.header-create-icon{
+  color: #2c3e50;
+  padding: 5px;
+}
