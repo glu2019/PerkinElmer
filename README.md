@@ -4,7 +4,7 @@
 
 ### Run both frontend and backend with docker:
 
-1. git clone https://github.com/glu2019/geotab.git
+1. git clone https://github.com/glu2019/PerkinElmer.git
 2. Run docker-compose build
 3. Run docker-compose up (please make sure the ports 80, 8080 and 3000 are open.)
 4. To run it permernantly: docker-compose up -d
@@ -15,7 +15,7 @@
 Frontend:
 With docker:
 1. docker-compose build
-2. Run docker-compose up or docker run –it –p 3000:3000 sudoku-spa:level-4
+2. Run docker-compose up
 3. visit localhost:3000
 
 Without docker
@@ -26,7 +26,7 @@ Without docker
 Backend:
 With docker
 1. docker-compose build
-2. Run docker-compose up or docker run –it –p 8080:8080 sudoku-ws:level-4
+2. Run docker-compose up
 3. Visit localhost:8080
 
 Without docker
