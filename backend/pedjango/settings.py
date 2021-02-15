@@ -110,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 WSGI_APPLICATION = 'pedjango.wsgi.application'
 LOGIN_REDIRECT_URL = config.get('auth','LOGIN_REDIRECT_URL')
-LOGOUT_REDIRECT_URL = config.get('auth','LOGOUT_REDIRECT_URL')
 
 # Internationalization
 LANGUAGE_CODE = config.get('django','LANGUAGE_CODE')
