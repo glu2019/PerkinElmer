@@ -22,7 +22,7 @@ DEBUG_API = config.getboolean('django', 'DEBUG_API')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config.getboolean('django','DEBUG')
 
-ALLOWED_HOSTS = ['192.168.56.101','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['72.15.139.146','127.0.0.1','localhost']
 
 # Application definition
 
