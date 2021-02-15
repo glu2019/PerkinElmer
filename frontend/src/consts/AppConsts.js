@@ -6,7 +6,7 @@ export const API_SECRET_KEY =
 export const SERVER_ERROR_500 =
   'Internal server error. Please try again later or contact us.'
 export const FETCH_PRODUCTS_URL =
-  'http://192.168.56.101/rest-api/product/?page=1'
-export const API_PRODUCT_URL = 'http://192.168.56.101/rest-api/product/'
+  '/rest-api/product/?page=1'
+export const API_PRODUCT_URL = '/rest-api/product/'
 export const API_DELETE_PRODUCT_URL =
-  'http://192.168.56.101/rest-api/product-delete/'
+  '/rest-api/product-delete/'
