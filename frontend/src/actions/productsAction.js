@@ -41,7 +41,6 @@ export const resetProductState = id => (dispatch, getState) => {
   ])
   let payload = _.cloneDeep(getState().createProductReducer)
   payload.openModal = true
-
   if (id) {
     let products = _.cloneDeep(getState().productReducer)
     let product = products.products.find(x => x.id == id)
@@ -166,7 +165,12 @@ export const onCreateProductFormSubmit = e => (dispatch, getState) => {
     payload.latitude.status = 'error'
     payload.latitude.message = 'The latitude is required.'
   }
-  
+  console.log('444',payload.productId.status != 'error',
+  payload.description.status != 'error',
+  payload.date.status != 'error',
+  payload.elevation.status != 'error' ,
+  payload.longitude.status != 'error',
+  payload.latitude.status != 'error')
   if (
     payload.productId.status != 'error' &&
     payload.description.status != 'error' &&
@@ -361,15 +365,18 @@ export const catchProductError = err => (dispatch, getState) => {
     payload: false
   })
   let payload = _.cloneDeep(getState().productReducer)
-
   if (!_.isEmpty(err.response)) {
-    payload.status = 'error'
+    payload.status = 'danger'
     payload.message = consts.SERVER_ERROR_500
     payload.openModal = false
     return dispatch([
       {
         type: types.SERVER_RESPONSE,
         payload
+      },
+      {
+        type: types.IS_HIDDEN,
+        isHidden: false
       },
       {
         type: types.RESET_CREATE_PRODUCT_STATE

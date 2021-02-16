@@ -2,7 +2,7 @@
 #header{
   display: flex;
   position: fixed;
-  width:100px;
+  width:250px;
   height: 100%;
   max-width: '13.75rem';
    padding: 0;
@@ -22,14 +22,14 @@
 #dashboard{
   height: 70px;
 }
-#texada-logo{
+#company-logo{
   width: 180% !important;
   object-fit: contain;
   position: relative;
   top: 0px;
   left: -15px;
 }
-.texada{
+.company{
   height: 50px;
 }
 .header-list-icon{

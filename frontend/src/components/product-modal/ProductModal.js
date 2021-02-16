@@ -10,17 +10,17 @@ import {
   onCloseModal,
   fetchProducts
 } from '../../actions'
+import { isEmpty } from "lodash"
+import SvgIcon from 'react-icons-kit'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import SvgIcon from 'react-icons-kit'
 import {
-  FormGroup,
-  FormControl,
-  HelpBlock,
+  Form,
   Button,
   Row,
   Col
 } from 'react-bootstrap'
+import 'react-responsive-modal/styles.css';
 import Modal from 'react-responsive-modal'
 import { DatetimePickerTrigger } from 'rc-datetime-picker'
 import 'rc-datetime-picker/dist/picker.css'
@@ -91,8 +91,8 @@ class ProductModal extends Component {
           <form onSubmit={this.onSubmit}>
             <Row>
               <Col lg={6} md={6} sm={6} xs={12}>
-                <FormGroup validationState={this.props.productId.status}>
-                  <FormControl
+                <Form.Group validationState={this.props.productId.status}>
+                  <Form.Control
                     type='number'
                     name='product-id'
                     value={this.props.productId.value}
@@ -100,15 +100,14 @@ class ProductModal extends Component {
                     onChange={this.props.onCreateProductInput}
                   />
                   <span className='input_border' />
-                  <FormControl.Feedback />
-                  {_.isEmpty(this.props.productId.message)
+                </Form.Group>
+                {isEmpty(this.props.productId.message)
                     ? null
-                    : <HelpBlock>{this.props.productId.message}</HelpBlock>}
-                </FormGroup>
+                    : <small className="danger">{this.props.productId.message}</small>}
               </Col>
               <Col lg={6} md={6} sm={6} xs={12}>
-                <FormGroup validationState={this.props.description.status}>
-                  <FormControl
+                <Form.Group validationState={this.props.description.status}>
+                  <Form.Control
                     type='text'
                     name='description'
                     value={this.props.description.value}
@@ -116,11 +115,10 @@ class ProductModal extends Component {
                     onChange={this.props.onCreateProductInput}
                   />
                   <span className='input_border' />
-                  <FormControl.Feedback />
-                  {_.isEmpty(this.props.description.message)
+                </Form.Group>
+                {isEmpty(this.props.description.message)
                     ? null
-                    : <HelpBlock>{this.props.description.message}</HelpBlock>}
-                </FormGroup>
+                    : <small className="danger">{this.props.description.message}</small>}
               </Col>
             </Row>
             <Row>
@@ -135,34 +133,29 @@ class ProductModal extends Component {
                       })}
                     className='date-picker-custom'
                   >
-                    <FormGroup validationState={this.props.date.status}>
-                      <FormControl
+                    <Form.Group validationState={this.props.date.status}>
+                      <Form.Control
                         type='text'
                         name='date'
                         value={this.moment('date', true)}
                         placeholder='Date time*'
-                        readOnly
                       />
                       <span className='input_border' />
-                      <FormControl.Feedback />
-                      {_.isEmpty(this.props.date.message)
+                    </Form.Group>
+                    {isEmpty(this.props.date.message)
                         ? null
-                        : <HelpBlock>{this.props.date.message}</HelpBlock>}
-                    </FormGroup>
-                    {this.props.date.value.format('YYYY-MM-DD HH:mm') ==
-                      'Invalid date'
-                      ? <SvgIcon
+                        : <small className='danger'>{this.props.date.message}</small>}
+                     <SvgIcon
                         size={20}
                         icon={calendar}
                         className='calendar-icon-modal'
                         />
-                      : null}
                   </DatetimePickerTrigger>
                 </div>
               </Col>
               <Col lg={6} md={6} sm={6} xs={12}>
-                <FormGroup validationState={this.props.elevation.status}>
-                  <FormControl
+                <Form.Group validationState={this.props.elevation.status}>
+                  <Form.Control
                     type='text'
                     name='elevation'
                     value={this.props.elevation.value}
@@ -170,17 +163,16 @@ class ProductModal extends Component {
                     onChange={this.props.onCreateProductInput}
                   />
                   <span className='input_border' />
-                  <FormControl.Feedback />
-                  {_.isEmpty(this.props.elevation.message)
+                </Form.Group>
+                {isEmpty(this.props.elevation.message)
                     ? null
-                    : <HelpBlock>{this.props.elevation.message}</HelpBlock>}
-                </FormGroup>
+                    : <small className="danger">{this.props.elevation.message}</small>}
               </Col>
             </Row>
             <Row>
               <Col lg={6} md={6} sm={6} xs={12}>
-                <FormGroup validationState={this.props.longitude.status}>
-                  <FormControl
+                <Form.Group validationState={this.props.longitude.status}>
+                  <Form.Control
                     type='text'
                     name='longitude'
                     value={this.props.longitude.value}
@@ -188,15 +180,14 @@ class ProductModal extends Component {
                     onChange={this.props.onCreateProductInput}
                   />
                   <span className='input_border' />
-                  <FormControl.Feedback />
-                  {_.isEmpty(this.props.longitude.message)
+                </Form.Group>
+                {isEmpty(this.props.longitude.message)
                     ? null
-                    : <HelpBlock>{this.props.longitude.message}</HelpBlock>}
-                </FormGroup>
+                    : <small className="danger">{this.props.longitude.message}</small>}
               </Col>
               <Col lg={6} md={6} sm={6} xs={12}>
-                <FormGroup validationState={this.props.latitude.status}>
-                  <FormControl
+                <Form.Group validationState={this.props.latitude.status}>
+                  <Form.Control
                     type='text'
                     name='latitude'
                     value={this.props.latitude.value}
@@ -204,15 +195,14 @@ class ProductModal extends Component {
                     onChange={this.props.onCreateProductInput}
                   />
                   <span className='input_border' />
-                  <FormControl.Feedback />
-                  {_.isEmpty(this.props.latitude.message)
+                </Form.Group>
+                {isEmpty(this.props.latitude.message)
                     ? null
-                    : <HelpBlock>{this.props.latitude.message}</HelpBlock>}
-                </FormGroup>
+                    : <small className="danger">{this.props.latitude.message}</small>}
               </Col>
             </Row>
             <Row>
-              <Button type='submit' bsStyle='primary' className='submit'>
+              <Button type='submit' className='submit'>
                 {this.props.id ? 'Update' : 'Create'}
               </Button>
             </Row>

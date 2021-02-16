@@ -8,19 +8,89 @@ import {
   catchProductError
 } from '../../actions'
 import './home-page.css'
+import styled from 'styled-components'
 import { withRouter } from 'react-router-dom'
+import { useTable } from 'react-table'
 import { connect } from 'react-redux'
-import ReactTable from 'react-table'
-import 'react-table/react-table.css'
+import { isEmpty } from "lodash"
 import ProductModal from '../product-modal/ProductModal'
 import Loading from '../common/loading/Loading'
 import Message from '../common/message/Message'
 import moment from 'moment'
-import 'rc-datetime-picker/dist/picker.css'
 import SearchBar from './SearchBar'
 import SvgIcon from 'react-icons-kit'
 import { cross } from 'react-icons-kit/entypo/cross'
 import { edit } from 'react-icons-kit/entypo/edit'
+
+const Styles = styled.div`
+  padding: 1rem;
+
+  table {
+    border-spacing: 0;
+    border: 1px solid black;
+
+    tr {
+      :last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    th,
+    td {
+      margin: 0;
+      padding: 0.5rem;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+
+      :last-child {
+        border-right: 0;
+      }
+    }
+  }
+`
+
+function Table({ columns, data }) {
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable({
+    columns,
+    data,
+  })
+
+  return (
+    <Styles>
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row, i) => {
+          prepareRow(row)
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+              })}
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+    </Styles>
+  )
+}
 
 class HomePage extends Component {
   constructor (props) {
@@ -60,21 +130,21 @@ class HomePage extends Component {
             <ProductModal />
             <Message
               status={
-                !_.isEmpty(this.props.status)
+                !isEmpty(this.props.status)
                   ? this.props.status
                   : this.props.transStatus
               }
               isHidden={this.props.isHidden}
             >
               <p>
-                {!_.isEmpty(this.props.message)
+                {!isEmpty(this.props.message)
                   ? this.props.message
                   : this.props.transMessage}
               </p>
             </Message>
             <div id='table-container'>
               <SearchBar />
-              <ReactTable
+              <Table
                 data={this.props.products}
                 style={{
                   height: 450
