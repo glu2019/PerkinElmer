@@ -1,6 +1,6 @@
 FROM python:3.8.0b1-stretch
 RUN apt-get update
-EXPOSE 8080
+EXPOSE 8000
 RUN mkdir /usr/local/PerkinElmer
 RUN mkdir /usr/local/PerkinElmer/backend/
 WORKDIR /usr/local/PerkinElmer/backend/

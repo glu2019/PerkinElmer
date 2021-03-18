@@ -1,5 +1,13 @@
 version: "3"
 services:
+  db:
+    image: postgres:12
+    environment:
+      - POSTGRES_DB=pedb
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - 5432:5432
   web:
     build: .
     image: perkin-elmer:level-4
